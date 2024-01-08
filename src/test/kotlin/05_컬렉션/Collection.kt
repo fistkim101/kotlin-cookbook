@@ -41,4 +41,40 @@ class Collection : FunSpec({
         sum shouldBe (1 + 2 + 3 + 4)
     }
 
+    // 깔때기
+    test("range, coerceIn") {
+        val range = 3L..8L
+        range.first shouldBe 3L
+        range.last() shouldBe 8L
+
+        val two = 2L
+        two.coerceIn(range) shouldBe 3L
+
+        val three = 3L
+        three.coerceIn(range) shouldBe three
+
+        val eight = 8L
+        eight.coerceIn(range) shouldBe eight
+
+        val nine = 9L
+        nine.coerceIn(range) shouldBe 8L
+    }
+
+    test("min, max, coerceIn") {
+        val min = 3L
+        val max = 8L
+
+        val two = 2L
+        two.coerceIn(min, max) shouldBe 3L
+
+        val three = 3L
+        three.coerceIn(min, max) shouldBe three
+
+        val eight = 8L
+        eight.coerceIn(min, max) shouldBe eight
+
+        val nine = 9L
+        nine.coerceIn(min, max) shouldBe 8L
+    }
+
 })
